@@ -266,3 +266,46 @@ int main(int argc, char *argv[])
 }
 ```
 
+* ## Problem
+> *Write a C program to print the **N**th fibonacci term of N. The number N is a non negative integer that will be passed to the program as the first command line parameter. Write the output to stdout formatted as an integer WITHOUT any other additional text. You may assume that the input integer will be such that the output will not exceed the largest possible integer that can be stored in an int type variable*.
+
+**Example :** 
+```
+If the argument is 5, the value of N is 5. 
+So we have to print 1+1+2+3+5 = 11
+Output : 11
+
+```
+### Solution
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int fib(int n)
+{
+    int a=0,b=1,c,i;
+    if(n==0) return a;
+    for(i=2;i<=n;i++)
+    {
+        c=a+b;
+        a=b;
+        b=c;
+    }
+    return b;
+}
+int main(int argc, char * argv[])
+{
+    if(argc==1)
+    {
+        printf("No arguments");
+        return 0;
+    }
+    else
+    {
+        int n;
+        n=atoi(argv[1]);
+        printf("%d",fib(n));
+        return 0;
+    }
+}
+```
