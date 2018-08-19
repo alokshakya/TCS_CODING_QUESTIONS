@@ -178,9 +178,9 @@ int main(int argc, char * argv[])
 
 **Example :** 
 ```
-If the argument is 4, the value of N is 4. 
-So, area of radius 4 is 3.14*4*4 = 50.24.
-Output : 50.24
+If the first argument is 4 and second argument is 3 the value of N is 4 and value of M is 3 
+So, area of triagnle having base 4 and height 3 is 0.5*4*3 = 6.00.
+Output : 6.00
 ```
 ### Solution
 
@@ -208,4 +208,61 @@ int main(int argc, char * argv[])
 }
 ```
 
+* ## Problem
+> *Write a C program to calculate the square root of prime number N if N is not prime then print 0.00. Print the output upto 2 decimal places. The number N is a non negative integer that will be passed to the program as the first command line parameter. Write the output to stdout formatted as an integer WITHOUT any other additional text. You may assume that the input integer will be such that the output will not exceed the largest possible integer that can be stored in an int type variable*.
+
+**Example :** 
+```
+If the argument is 5, the value of N is 5. 
+Since 5 is a prime no so we have to print square root of 5 that is 2.2360679775, but we have to print upto 2 decimal places so we will print 2.23
+Output : 2.23
+
+If the argument is 4, the value of N is 4. 
+Since 4 is not a prime no so we have to print 0.00
+Output : 0.00
+
+```
+### Solution
+
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+#include<math.h>
+bool isPrime(int n)
+{
+    if(n<2)
+        return false;
+    int i;
+    for(i=2;i*i<=n;i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+int main(int argc, char *argv[])
+{
+    if(argc==1)
+    {
+        printf("No arguments");
+        return 0;
+    }
+    else
+    {
+        int n;
+        n=atoi(argv[1]);
+        float sq=0;
+        if(isPrime(n))
+        {
+            sq=sqrt(n);
+            printf("%.2f",sq);
+        }
+        else
+            printf("%.2f",sq);
+        return 0;
+    }
+}
+```
 
