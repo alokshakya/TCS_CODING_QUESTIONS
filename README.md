@@ -67,27 +67,27 @@ int main(int argc, char *argv[])
 
 ### Now description of code :
 
-#include <stdio.h> *// is used for printf function*
+`#include <stdio.h>` *// is used for printf function*
 
-#include <stdlib.h> *//is used for function atoi() and atoi is used converting string into int*
+`#include <stdlib.h>` *//is used for function atoi() and atoi is used converting string into int*
 
-**You may be asked to take float input from command line so in that case you have to use** ***atof()*** **function which is also present in #include<stdlib.h> atof() is a function in the C programming language that converts a string into a floating point numerical representation.**
+**You may be asked to take float input from command line so in that case you have to use** ***atof()*** **function which is also present in `#include<stdlib.h>` atof() is a function in the C programming language that converts a string into a floating point numerical representation.**
 
 **// argc tells the number of arguments provided+1,  +1 for file.exe** suppose you will be provided 1 input n from command line then value of argc would be 2. One for input n and another for file.exe.
 
-**// char* argv[] is used to store the command line arguments in the string format**
+**// `char* argv[]` is used to store the command line arguments in the string format**
 
-**int main(int argc, char* argv[])** this line is important because in program you have to write this line if you would be taking input from command line arguments. Meaning of int argc and char* argv[] have been provided above.
+`int main(int argc, char* argv[])` this line is important because in program you have to write this line if you would be taking input from command line arguments. Meaning of int argc and char* argv[] have been provided above.
 
-**if(argc==1)** means you have not been provided any command line arguments. And value of argc==1 because file.exe will be provided automatically by compiler. So this line is written for exception handling while you are testing your program. If you are sure that input from command line arguments will be provided then you can remove this part. In TCS exam you will be provided input so you can remove if part and can start from else part.
+`if(argc==1)` means you have not been provided any command line arguments. And value of argc==1 because file.exe will be provided automatically by compiler. So this line is written for exception handling while you are testing your program. If you are sure that input from command line arguments will be provided then you can remove this part. In TCS exam you will be provided input so you can remove if part and can start from else part.
 
 **actual arguments starts from index 1 to (argc-1)** In this program we are provided that we will be provided only one number from command line argument. So we can directly access that number ***argv[1]***, remember argv[] is array of character types so we are accessing element at index 1. So this is string and we can't perform mathmatical operations on string.
 
 **so for converting string into int we will use** ***atoi()*** **functioin which is predefined function in #include<stdlib.h>**
 
-**Now int n; n=atoi(argv[1])** will provide n int on which we can perform operations. Just like taking input from scanf.
+**Now `int n; n=atoi(argv[1])`** will provide n int on which we can perform operations. Just like taking input from scanf.
 
-**You may be asked to take input of two numbers from command line arguments, then you declare two variables int n,m; and take input from command line as** `n=atoi(argv[1]); m=atoi(argv[2])` .
+**You may be asked to take input of two numbers from command line arguments, then you declare two variables `int n,m;` and take input from command line as** `n=atoi(argv[1]); m=atoi(argv[2])` .
 
 ```c
 int n,m;
@@ -166,6 +166,42 @@ int main(int argc, char * argv[])
         float area;
         radius=atoi(argv[1]);
         area=pi*radius*radius;
+        printf("%.2f",area);
+        return 0;
+    }
+}
+```
+
+
+* ## Problem
+> *Write a C program to calculate the area of a triangle. You will be provided base and height of triangle as N,M. The numbers N,M are non negative integer that will be passed to the program as the first and second command line parameter. Write the output to stdout formatted as an float upto 2 decimal places WITHOUT any other additional text. You may assume that the input integer will be such that the output will not exceed the largest possible integer that can be stored in an int type variable*.
+
+**Example :** 
+```
+If the argument is 4, the value of N is 4. 
+So, area of radius 4 is 3.14*4*4 = 50.24.
+Output : 50.24
+```
+### Solution
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(int argc, char * argv[])
+{
+    if(argc==1)
+    {
+        printf("No arguments");
+        return 0;
+    }
+    else
+    {
+        int base,height;
+        float area;
+        base=atoi(argv[1]);
+        height=atoi(argv[2]);
+        //area=(1/2)*base*height;//this formula will give answer 0.00 because (1/2) will give 0 because both 1 and 2 are int
+        area=(1.0/2.0)*base*height;
         printf("%.2f",area);
         return 0;
     }
