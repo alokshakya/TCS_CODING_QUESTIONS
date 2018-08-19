@@ -309,3 +309,67 @@ int main(int argc, char * argv[])
     }
 }
 ```
+
+* ## Problem
+> *Write a C program to check whether the given number is armstrong number or not. If number N is armstrong number then print **YES** otherwise print **No**. The number N is a non negative integer that will be passed to the program as the first command line parameter. Write the output to stdout formatted as an integer WITHOUT any other additional text. You may assume that the input integer will be such that the output will not exceed the largest possible integer that can be stored in an int type variable*.
+
+**Example :** 
+```
+If the argument is 1634, the value of N is 1634. 
+Since 1^4 + 6^4 + 3^4 + 4^4 = 1634. So this is armstrong number. Therefore we have to print "Yes"
+Output : "Yes"
+
+```
+### Solution
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int power(int x, int n)
+{
+    if(n==0) return 1;
+    else if(n%2==0)
+        return power((x*x),n/2);
+    else
+        return (x*power((x*x),(n-1)/2));
+}
+int main(int argc, char * argv[])
+{
+    if(argc==1)
+    {
+        printf("No arguments ");
+        return 0;
+    }
+    else
+    {
+        int n,temp,digits;
+        n=atoi(argv[1]);
+        
+        //calculate digits
+        temp=n;
+        digits=0;
+        while(temp)
+        {
+            digits++;
+            temp/=10;
+        }
+        
+        int sum=0;
+        //calculate digit pow digits
+        temp=n;
+        int lastDigit;
+        while(temp)
+        {
+            lastDigit=temp%10;
+            sum+=power(lastDigit,digits);
+            temp/=10;
+        }
+        if(sum==n)
+            printf("Yes\n");
+        else
+            printf("No\n");
+        return 0;
+    }
+}
+
+```
