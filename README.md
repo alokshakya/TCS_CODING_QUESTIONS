@@ -136,7 +136,40 @@ int main(int argc, char *argv[])
 }
 ```
 
+**Now we will write problem statement and solution for them, approach of solving them will be same, so description of code will not be provided. You will understand code easily.**
 
+* ## Problem
+> *Write a C program to calculate the area of a circle. You will be provided radius of circle as N. The number N is a non negative integer that will be passed to the program as the first command line parameter. Write the output to stdout formatted as an float upto 2 decimal places WITHOUT any other additional text. You may assume that the input integer will be such that the output will not exceed the largest possible integer that can be stored in an int type variable*.
 
+**Example :** 
+```
+If the argument is 4, the value of N is 4. 
+So, area of radius 4 is 3.14*4*4 = 50.24.
+Output : 50.24
+```
+### Solution
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(int argc, char * argv[])
+{
+    if(argc==1)
+    {
+        printf("No arguments");
+        return 0;
+    }
+    else
+    {
+        int radius;
+        float pi=3.14;
+        float area;
+        radius=atoi(argv[1]);
+        area=pi*radius*radius;
+        printf("%.2f",area);
+        return 0;
+    }
+}
+```
 
 
