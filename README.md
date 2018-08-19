@@ -373,3 +373,46 @@ int main(int argc, char * argv[])
 }
 
 ```
+
+* ## Problem
+> *Write a C program to check whether the given number is palindrome number or not. If number N is palindrome number then print **Palindrome** otherwise print **Not Palindrome**. The number N is a non negative integer that will be passed to the program as the first command line parameter. Write the output to stdout formatted as an integer WITHOUT any other additional text. You may assume that the input integer will be such that the output will not exceed the largest possible integer that can be stored in an int type variable*.
+
+**Example :** 
+```
+If the argument is 16461, the value of N is 16461. 
+Since 1 6 4 6 1 = 1 6 4 6 1. So this is palindrome number. Therefore we have to print "Palindrome"
+Output : "Palindrome"
+
+```
+### Solution
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+int main(int argc, char *argv[])
+{
+    if(argc==1)
+    {
+        printf("No Arguments");
+        return 0;
+    }
+    else
+    {
+        int n,reverseNumber,temp,rem;
+        n=atoi(argv[1]);
+        temp=n;
+        reverseNumber=0;
+        while(temp)
+        {
+            rem=temp%10;
+            reverseNumber=reverseNumber*10+rem;
+            temp=temp/10;
+        }
+        if(n==reverseNumber)
+            printf("Palindrome");
+        else
+            printf("Not Palindrome");
+        return 0;
+    }
+}
+```
